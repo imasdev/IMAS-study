@@ -60,7 +60,7 @@ Map<Currency, List<Transaction>> transactionsByCurrencies = transactions
 
 - 스트림에 collect를 호출하면 스트림 요소에(컬렉터로 파라미터화된) 리듀싱 연산이 수행된다. 아래 그림은 내부적으로 **리듀싱 연산**이 일어나는 그림이다. collect에서는 리듀싱 연산을 이용해서 스트림의 각 요소를 방문하면서 컬렉터가 작업을 처리한다.
 
-![스크린샷 2022-05-09 01.43.42.png](CHAPTER%206%20%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B7%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%20%E1%84%89%E1%85%AE%E1%84%8C%E1%85%B5%E1%86%B8%20e54a11fbb30d40338331ed7c9fcc18fd/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-05-09_01.43.42.png)
+![스크린샷 2022-05-09 01.43.42.png](CHAPTER_6_스트림으로_데이터_수집/스크린샷_2022-05-09_01.43.42.png)
 
 ## 6.1.2 미리 정의된 컬렉터
 
@@ -194,7 +194,7 @@ Returns a Collector that produces the sum of a integer-valued function applied t
 
 `int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));`
 
-![Untitled](CHAPTER%206%20%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B7%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%20%E1%84%89%E1%85%AE%E1%84%8C%E1%85%B5%E1%86%B8%20e54a11fbb30d40338331ed7c9fcc18fd/Untitled.png)
+![Untitled](CHAPTER_6_스트림으로_데이터_수집/Untitled.png)
 
 [사진 출처](https://cornswrold.tistory.com/546)
 
@@ -297,7 +297,7 @@ int totalCalories = menu.stream().collect(reducing(0, → 초기값
 																			Integer::sum)); → 합계함수
 ```
 
-![Untitled](CHAPTER%206%20%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B7%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%20%E1%84%89%E1%85%AE%E1%84%8C%E1%85%B5%E1%86%B8%20e54a11fbb30d40338331ed7c9fcc18fd/Untitled%201.png)
+![Untitled](CHAPTER_6_스트림으로_데이터_수집/Untitled%201.png)
 
 ```java
 public static <T> Collector<T, ?, Long> counting() {
@@ -337,7 +337,7 @@ Map<Dish.Type, List<Dish>> dishesByType = menu.stream().collect(groupingBy(Dish:
 
 - 위 코드에서 groupingBy 메서드 기준으로 스트림이 그룹화되므로 이를 `분류함수` 라고 함.
 
-![Untitled](CHAPTER%206%20%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B7%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%20%E1%84%89%E1%85%AE%E1%84%8C%E1%85%B5%E1%86%B8%20e54a11fbb30d40338331ed7c9fcc18fd/Untitled%202.png)
+![Untitled](CHAPTER_6_스트림으로_데이터_수집/Untitled%202.png)
 
 ### 조금 더 복잡한 로직으로는 그룹화를 할 수 없는가?
 
@@ -450,7 +450,7 @@ OTHER={DIET=[rice, seasonal fruit], NORMAL=[french fries, pizza]}
 
 }
 
-![Untitled](CHAPTER%206%20%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B7%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%20%E1%84%89%E1%85%AE%E1%84%8C%E1%85%B5%E1%86%B8%20e54a11fbb30d40338331ed7c9fcc18fd/Untitled%203.png)
+![Untitled](CHAPTER_6_스트림으로_데이터_수집/Untitled%203.png)
 
 - 보통 groupingBy의 연산을 **버킷** 개념으로 생각하면 쉽다. 첫 번째 groupingBy는 각 키의 버킷을 만든다. 그리고 준비된 각각의 버킷을 서브스트림 컬렉터로 채워가기를 반복하면서 n수준 그룹화를 달성한다.
 
@@ -507,7 +507,7 @@ Map<Dish.Type, Dish> mostCaloricByType =
 
 `리듀싱 컬렉터는 절대 Optional.empty()를 반환x`
 
-![Untitled](CHAPTER%206%20%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B7%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%20%E1%84%83%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A5%20%E1%84%89%E1%85%AE%E1%84%8C%E1%85%B5%E1%86%B8%20e54a11fbb30d40338331ed7c9fcc18fd/Untitled%204.png)
+![Untitled](CHAPTER_6_스트림으로_데이터_수집/Untitled%204.png)
 
 - 컬렉터는 점선으로 표시.
 - groupingBy는 가장 바깥쪽에 위치하면서 요리의 종류에 따라 메뉴 스트림을 세 개의 서브스트림으로 그룹화
