@@ -48,7 +48,7 @@ Chapter 3 람다 표현식 목차
 (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
 ```
 
-![Untitled](CHAPTER 3 람다 표현식/Untitled.png)
+![Untitled](CHAPTER%203%20람다%20표현식/Untitled.png)
 
 - **파라미터 리스트**: `Comparator`의 `compare` 메서드 파라미터(사과 두 개)
 - **화살표**: 화살표(→)는 람다의 파라미터 리스트와 바디를 구분한다.
